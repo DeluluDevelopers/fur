@@ -12,27 +12,31 @@ export default function HeroSection({ onBgColorChange }: HeroSectionProps) {
   const heroBackgrounds = [
     {
       bgColor: "#e0ce8a", // Warm golden yellow
-      image: "🐱",
+      image: "/dogs/d1.avif",
       alt: "Black and white cat on golden background",
       textColor: "text-gray-800",
+      heading: "furvourite",
     },
     {
       bgColor: "#9acbda", // Soft blue
-      image: "🐕",
+      image: "/dogs/d2.avif",
       alt: "Playful jumping dog",
       textColor: "text-gray-800",
+      heading: "meowelous",
     },
     {
       bgColor: "#e3b3c3", // Soft pink
-      image: "🦮",
+      image: "/dogs/d3.avif",
       alt: "Dog in sweater",
       textColor: "text-gray-800",
+      heading: "purrfect",
     },
     {
       bgColor: "#98cbbc", // Mint green
-      image: "🐈",
+      image: "/dogs/d4.avif",
       alt: "Gray and white cat on mint background",
       textColor: "text-gray-800",
+      heading: "pawsome",
     },
   ];
 
@@ -51,7 +55,7 @@ export default function HeroSection({ onBgColorChange }: HeroSectionProps) {
 
   return (
     <section
-      className='relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-1000'
+      className='relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-2000 ease-in-out'
       style={{ backgroundColor: currentBg.bgColor }}
     >
       {/* Gradient Overlay for better text readability */}
@@ -64,9 +68,9 @@ export default function HeroSection({ onBgColorChange }: HeroSectionProps) {
           <div className='flex-1 max-w-2xl'>
             {/* Main Heading */}
             <h1
-              className={`text-6xl md:text-8xl lg:text-9xl font-bold lowercase mb-6 leading-none ${currentBg.textColor}`}
+              className={`text-6xl md:text-8xl lg:text-9xl font-bold lowercase mb-6 leading-none ${currentBg.textColor} transition-all duration-2000 ease-in-out`}
             >
-              meowelous
+              {currentBg.heading}
             </h1>
 
             {/* Subtitle */}
@@ -92,33 +96,13 @@ export default function HeroSection({ onBgColorChange }: HeroSectionProps) {
 
           {/* Right side - Pet Image */}
           <div className='flex-1 flex justify-center items-center'>
-            <div className='w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center shadow-2xl transform transition-all duration-1000 hover:scale-105'>
-              <div className='text-8xl md:text-9xl'>{currentBg.image}</div>
+            <div className='w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] rounded-full backdrop-blur-sm bg-white/10 shadow-xl transform transition-all duration-2000 ease-in-out hover:scale-105 overflow-hidden'>
+              <img
+                src={currentBg.image}
+                alt={currentBg.alt}
+                className='w-full h-full object-cover rounded-full transition-all duration-2000 ease-in-out'
+              />
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Background Indicators */}
-      <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-40'>
-        {heroBackgrounds.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentBgIndex(index)}
-            className={`w-4 h-4 rounded-full transition-all duration-500 transform hover:scale-125 ${
-              index === currentBgIndex
-                ? "bg-white shadow-lg ring-2 ring-white/50"
-                : "bg-white/40 hover:bg-white/70"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Scroll Down Indicator */}
-      <div className='absolute bottom-20 left-1/2 transform -translate-x-1/2 z-40'>
-        <div className='animate-bounce'>
-          <div className='w-6 h-10 border-2 border-white/50 rounded-full flex justify-center'>
-            <div className='w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse'></div>
           </div>
         </div>
       </div>
